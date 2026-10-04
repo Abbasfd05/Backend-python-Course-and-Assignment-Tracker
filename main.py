@@ -9,7 +9,7 @@ from fastapi import FastAPI
 # Controllers
 from controllers.users import router as UsersRouter
 from controllers.courses import router as CourseRouter
-from controllers.Assignments import router as AssigmentRouter
+from controllers.Assignments import router as AssignmentRouter
 
 
 app = FastAPI()
