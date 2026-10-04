@@ -1,17 +1,18 @@
 from models.user import UserModel
+from models.role import UserRole
 
 def create_test_users():
-    user1 = UserModel(username="arjun_dev", email="arjun@devmail.in")
-    user1.set_password("123")
-    user2 = UserModel(username="emma_johnson", email="emma.johnson@email.com")
-    user2.set_password("123")
-    user3 = UserModel(username="fatima_ali", email="fatima.ali@mail.ae")
-    user3.set_password("123")
-    user4 = UserModel(username="lucas_silva", email="lucas.silva@correo.br")
-    user4.set_password("123")
-    user5 = UserModel(username="elena_popov", email="elena.popov@mail.ru")
-    user5.set_password("123")
+    admin = UserModel(username="Ahmed_Abbas", email="arjun@devmail.in" , role=UserRole.ADMIN)
+    admin.set_password("123")
+    student1 = UserModel(username="Ali_Ahmed", email="emma.johnson@email.com" , role=UserRole.STUDENT)
+    student1.set_password("123")
+    student2 = UserModel(username="fatima_ali", email="fatima.ali@mail.ae", role=UserRole.STUDENT)
+    student2.set_password("123")
+    instructor = UserModel(username="Prof.Mohammed", email="lucas.silva@correo.br", role=UserRole.INSTRUCTOR)
+    instructor.set_password("123")
+    student3 = UserModel(username="", email="elena.popov@mail.ru", role=UserRole.STUDENT)
+    student3.set_password("123")
 
-    return [user1, user2, user3, user4, user5]
+    return [admin, student1, student2, instructor, student3]
 
 user_list = create_test_users()

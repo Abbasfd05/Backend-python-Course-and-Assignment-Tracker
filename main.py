@@ -8,6 +8,8 @@ from fastapi import FastAPI
 
 # Controllers
 from controllers.users import router as UsersRouter
+from controllers.courses import router as CourseRouter
+from controllers.Assignments import router as AssigmentRouter
 
 
 app = FastAPI()
@@ -27,6 +29,8 @@ app.add_middleware(
 )
 
 app.include_router(UsersRouter, prefix='/api')
+app.include_router(CourseRouter, prefix='/api')
+app.include_router(AssignmentRouter, prefix='/api')
 
 @app.get('/health')
 def health_check():
