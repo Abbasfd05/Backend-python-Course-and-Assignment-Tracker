@@ -21,7 +21,14 @@ class UserModel(BaseModel):
     password = Column(String, nullable=True)
     role = Column(SQLEnum(UserRole, name="user_role"), nullable=True , default=UserRole.STUDENT)
 
-    
+     # A user can teach many courses (as an instructor)...
+    courses_taught = relationship(
+        "CourseModel", back_populates="instructor", cascade="all, delete-orphan"
+    )
+    # ...and/or enroll in many courses (as a student)
+    enrollments = relationship(
+        "EnrollmentModel", back_populates="student", cascade="all, delete-orphan"
+    )
     
     def set_password(self, plain_txt_password: str):
         self.password = pwd_context.hash(plain_txt_password)

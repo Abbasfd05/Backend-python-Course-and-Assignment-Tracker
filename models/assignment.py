@@ -9,4 +9,4 @@ class AssignmentModel(BaseModel):
     due_date = Column(Date, nullable=True)
     course_id = Column(Integer, ForeignKey("courses.id"), nullable=False)
 
-    
+    course = relationship("CourseModel", back_populates="assignments")
