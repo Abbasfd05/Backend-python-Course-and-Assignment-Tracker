@@ -1,10 +1,13 @@
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, Enum as SQLEnum
 from sqlalchemy.orm import relationship
 from .base import BaseModel
 from passlib.context import CryptContext
 from datetime import datetime, timedelta, timezone
 import jwt
 from config.environment import JWT_SECRET
+
+# role model 
+from .role import UserRole
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
@@ -16,7 +19,10 @@ class UserModel(BaseModel):
     username = Column(String, unique=True)  # Each username must be unique
     email = Column(String, unique=True)  # Each email must be unique
     password = Column(String, nullable=True)
+    role = Column(SQLEnum(UserRole, name="user_role"), nullable=True , default=UserRole.STUDENT)
 
+    
+    
     def set_password(self, plain_txt_password: str):
         self.password = pwd_context.hash(plain_txt_password)
 
