@@ -1,30 +1,25 @@
-from click import Option
 from pydantic import BaseModel
 from typing import Optional
-from datetime import date
 
 
-class CourseSchema():
-      id: int
-      title: str 
-      description: Optional[str]= None
-      semester: Option[str]= None 
-      instructor_id= int 
+class CourseSchema(BaseModel):
+    id: int
+    title: str
+    description: Optional[str] = None
+    semester: Optional[str] = None
+    instructor_id: int
 
-      class Config:
-       from_attributes = True
+    class Config:
+        from_attributes = True
 
-        
 
-class CreateCourseSchema():
-       id: int
-       description: Optional[str]= None
-       semester: Option[str]= None 
-       
+class CreateCourseSchema(BaseModel):
+    title: str
+    description: Optional[str] = None
+    semester: Optional[str] = None
 
-class UpdateCourseSchema():
+
+class UpdateCourseSchema(BaseModel):
     title: Optional[str] = None
     description: Optional[str] = None
     semester: Optional[str] = None
-        
-    

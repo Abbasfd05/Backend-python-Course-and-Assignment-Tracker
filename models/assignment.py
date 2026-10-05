@@ -5,7 +5,7 @@ from .base import BaseModel
 
 class AssignmentModel(BaseModel):
 
-    __tablename__ = "enrollments"
+    __tablename__ = "assignments"
 
     title = Column(String, nullable=False)
     description = Column(String, nullable=True)
