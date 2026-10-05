@@ -5,6 +5,9 @@ from .base import BaseModel
 
 class EnrollmentModel(BaseModel):
 
+    __tablename__ = "enrollments"
+
+
     student_id=Column(Integer, ForeignKey("users.id"), nullable=False)
     course_id=Column(Integer, ForeignKey("courses.id"), nullable=False)
 

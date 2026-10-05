@@ -5,6 +5,8 @@ from .base import BaseModel
 
 class CourseModel(BaseModel):
 
+    __tablename__ = "courses"
+
     title=Column(String, nullable=False)
     description=Column(String, nullable=False)
     semester=Column(String,nullable=False)

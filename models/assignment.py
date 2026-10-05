@@ -4,6 +4,9 @@ from .base import BaseModel
 
 
 class AssignmentModel(BaseModel):
+
+    __tablename__ = "enrollments"
+
     title = Column(String, nullable=False)
     description = Column(String, nullable=True)
     due_date = Column(Date, nullable=True)
