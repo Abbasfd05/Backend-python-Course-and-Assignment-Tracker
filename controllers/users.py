@@ -2,11 +2,19 @@
 
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
+from typing import List
 from models.user import UserModel
-from serializers.user import UserSchema, UserRegistrationSchema, UserLoginSchema, UserTokenSchema
+from models.role import UserRole
+from serializers.user import (
+    UserSchema,
+    UserRegistrationSchema,
+    UserLoginSchema,
+    UserTokenSchema,
+    UserRoleUpdateSchema,
+)
 from database import get_db
 from dependencies.get_current_user import get_current_user
-
+from dependencies.require_role import require_role
 router = APIRouter()
 
 @router.post("/register", response_model=UserTokenSchema, status_code=201)
@@ -52,4 +60,30 @@ def login(user: UserLoginSchema, db: Session = Depends(get_db)):
 
 @router.get('/current_user', response_model=UserSchema)
 def current_user(user: UserSchema = Depends(get_current_user)):
+    return user
+
+
+
+@router.get("/users", response_model=List[UserSchema])
+def get_users(
+    db: Session = Depends(get_db),
+    current_user: UserModel = Depends(require_role(UserRole.ADMIN)),
+):
+    return db.query(UserModel).all()
+
+
+@router.put("/users/{user_id}", response_model=UserSchema)
+def update_user_role(
+    user_id: int,
+    payload: UserRoleUpdateSchema,
+    db: Session = Depends(get_db),
+    current_user: UserModel = Depends(require_role(UserRole.ADMIN)),
+):
+    user = db.query(UserModel).filter(UserModel.id == user_id).first()
+    if not user:
+        raise HTTPException(status_code=404, detail="User not found")
+
+    user.role = payload.role
+    db.commit()
+    db.refresh(user)
     return user

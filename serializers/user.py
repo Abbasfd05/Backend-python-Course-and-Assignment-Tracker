@@ -1,6 +1,7 @@
 # serializers/user.py
 
 from pydantic import BaseModel
+from models.role import UserRole
 
 # Form Validations
 class UserRegistrationSchema(BaseModel):
@@ -12,14 +13,18 @@ class UserLoginSchema(BaseModel):
     username: str  # User's unique name
     password: str  # Plain text password for user registration (will be hashed before saving)
 
+class UserRoleUpdateSchema(BaseModel):
+    role: UserRole
+
 # Response Schemas
 class UserSchema(BaseModel):
     id: int
     username: str
     email: str
+    role: UserRole
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class UserTokenSchema(BaseModel):
     token: str
