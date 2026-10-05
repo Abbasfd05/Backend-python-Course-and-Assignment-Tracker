@@ -25,9 +25,9 @@ def getAssignments (
     db: Session = Depends(get_db),
     current_user: UserModel = Depends(get_current_user),
 ):
-    course=db.query(CourseModel).filter(CourseModel.id==course_id).first();
+    course=db.query(CourseModel).filter(CourseModel.id==course_id).first()
     if not course:
-        raise HTTPException(status_code=404 , Detail="Course not found")
+        raise HTTPException(status_code=404 , detail="Course not found")
     is_instructor = course.instructor_id == current_user.id
     is_admin = current_user.role == UserRole.ADMIN
     is_enrolled = (
