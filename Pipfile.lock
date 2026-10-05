@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "3a8c7293ef1d05f996456f1a4dd0251c8365d7a95f2374a198e4802281b7698b"
+            "sha256": "25689e25325c851032043d776464a5914ee9468459e6de4d6cda560462eaba90"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -109,6 +109,23 @@
             ],
             "markers": "python_version >= '3.8'",
             "version": "==0.16.0"
+        },
+        "httpcore2": {
+            "hashes": [
+                "sha256:e0aa977abe17e69a3b820a24542a6fa88702676d83880b8d194dcd18408e5103",
+                "sha256:e1e05d4f25f7d7d496bfb96748f6f4b67657b03da069b3a68c36069f3db73d0a"
+            ],
+            "markers": "python_version >= '3.10'",
+            "version": "==2.13.1"
+        },
+        "httpx2": {
+            "hashes": [
+                "sha256:6dff50fabc270ee5fd25d845d0b078ed20564579744d6d962850975996d2f9a4",
+                "sha256:e48744a19e3af5ee48313d0ce5fe941d5422fae5705ea922a4aabf94d7800dfa"
+            ],
+            "index": "pypi",
+            "markers": "python_version >= '3.10'",
+            "version": "==2.13.1"
         },
         "idna": {
             "hashes": [
@@ -653,6 +670,14 @@
             ],
             "markers": "python_version >= '3.10'",
             "version": "==1.7.0"
+        },
+        "truststore": {
+            "hashes": [
+                "sha256:9d91bd436463ad5e4ee4aba766628dd6cd7010cf3e2461756b3303710eebc301",
+                "sha256:adaeaecf1cbb5f4de3b1959b42d41f6fab57b2b1666adb59e89cb0b53361d981"
+            ],
+            "markers": "python_version >= '3.10'",
+            "version": "==0.10.4"
         },
         "typing-extensions": {
             "hashes": [
