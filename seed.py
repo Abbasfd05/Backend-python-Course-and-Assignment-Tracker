@@ -1,13 +1,15 @@
 # seed.py
 
-from sqlalchemy.orm import sessionmaker, Session
-from data.user_data import user_list
-from config.environment import DATABASE_URL
+from sqlalchemy.orm import sessionmaker
 from sqlalchemy import create_engine
+from config.environment import DATABASE_URL
 from models.base import Base
+from models.user import UserModel
 from models.course import CourseModel
 from models.assignment import AssignmentModel
 from models.enrollment import EnrollmentModel
+
+from data.user_data import user_list
 
 engine = create_engine(DATABASE_URL)
 SessionLocal = sessionmaker(bind=engine)
