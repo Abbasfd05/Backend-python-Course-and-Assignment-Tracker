@@ -69,6 +69,7 @@ CoursePilot is a full-stack web application that helps university students organ
 | :--- | :--- | :--- |
 | **POST** | `/api/register` | Register a new user account. |
 | **POST** | `/api/login` | Authenticate an existing user and return a JWT. |
+| **GET** | `/api/current_user` | Return the currently authenticated user. |
 
 ---
 
