@@ -31,7 +31,7 @@ def upgrade() -> None:
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.Column('updated_at', sa.DateTime(), nullable=True),
     sa.ForeignKeyConstraint(['instructor_id'], ['users.id']),
-    sa.sa.PrimaryKeyConstraint('id'),
+    sa.PrimaryKeyConstraint('id'),
     )
     op.create_index(op.f('ix_courses_id'), 'courses', ['id'], unique=False)
     # ### end Alembic commands ###
