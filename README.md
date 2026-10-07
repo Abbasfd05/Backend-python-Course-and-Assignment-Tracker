@@ -1,6 +1,6 @@
 # CoursePilot
 
-![CoursePilot Logo](./assets/logo.png)
+![CoursePilot Logo](assets/image.png)
 
 CoursePilot is a full-stack web application that helps university students organize their courses and track assignment deadlines in one place. Instructors create courses and post assignments with due dates, students enroll in courses and track their own progress, and admins manage user accounts and oversee the platform. It was built as a Computer Science student juggling multiple courses each semester, to solve a problem I deal with directly: keeping track of what's due, for which course, and when.
 
