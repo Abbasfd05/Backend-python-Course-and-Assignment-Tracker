@@ -10,7 +10,7 @@ def create_test_users():
     student2.set_password("123")
     instructor = UserModel(username="Prof.Mohammed", email="lucas.silva@correo.br", role=UserRole.INSTRUCTOR)
     instructor.set_password("123")
-    student3 = UserModel(username="", email="elena.popov@mail.ru", role=UserRole.STUDENT)
+    student3 = UserModel(username="Denis", email="elena.popov@mail.ru", role=UserRole.STUDENT)
     student3.set_password("123")
 
     return [admin, student1, student2, instructor, student3]

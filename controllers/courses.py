@@ -44,6 +44,14 @@ def get_courses(
         .all()
     )
 
+@router.get("/courses/available", response_model=List[CourseSchema])
+def get_available_courses(
+    db: Session = Depends(get_db),
+    current_user: UserModel = Depends(get_current_user),
+):
+    # Any authenticated user can browse every course, regardless of role.
+    return db.query(CourseModel).all()
+
 
 @router.get("/courses/{course_id}", response_model=CourseSchema)
 def get_single_course(
@@ -61,7 +69,7 @@ def get_single_course(
 def create_course(
     course: CreateCourseSchema,
     db: Session = Depends(get_db),
-    current_user: UserModel = Depends(require_role(UserRole.INSTRUCTOR)),
+    current_user: UserModel = Depends(require_role(UserRole.INSTRUCTOR, UserRole.ADMIN)),
 ):
     new_course = CourseModel(**course.dict(), instructor_id=current_user.id)
     db.add(new_course)
